@@ -54,7 +54,7 @@ def execute(args, parser):
             raise CondaEnvironmentError('cannot remove root environment,\n'
                                         '       add -n NAME or -p PREFIX option')
         print("\nRemove all packages in environment %s:\n" % prefix, file=sys.stderr)
-
+        print(PrefixData(prefix).iter_records())
         if isinstance(PrefixData(prefix).iter_records(), type(None)):
             print('nothing to remove')
             return
