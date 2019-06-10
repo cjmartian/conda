@@ -55,6 +55,10 @@ def execute(args, parser):
                                         '       add -n NAME or -p PREFIX option')
         print("\nRemove all packages in environment %s:\n" % prefix, file=sys.stderr)
 
+        if isinstance(PrefixData(prefix).iter_records(), type(None)):
+            print('nothing to remove')
+            return
+
         if 'package_names' in args:
             stp = PrefixSetup(
                 target_prefix=prefix,
