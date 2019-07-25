@@ -220,7 +220,7 @@ class Context(Configuration):
     use_local = PrimitiveParameter(False)
     whitelist_channels = SequenceParameter(string_types, expandvars=True)
     restore_free_channel = PrimitiveParameter(False)
-    repodata_fns = SequenceParameter(string_types, default=('current_repodata.json', REPODATA_FN),
+    repodata_fns = SequenceParameter(string_types, default=('current_repodata.json', REPODATA_FN,),
                                                     aliases=('repodata_fn'))
     _use_only_tar_bz2 = PrimitiveParameter(None, element_type=(bool, NoneType),
                                            aliases=('use_only_tar_bz2',))
