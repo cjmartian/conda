@@ -62,6 +62,9 @@ class ContextCustomRcTests(TestCase):
           rsync: 'false'
         aggressive_update_packages: []
         channel_priority: false
+        repodata_fns:
+          - somedata.json
+          - otherdata.json
         """)
         reset_context(())
         rd = odict(testdata=YamlRawParameter.make_raw_parameters('testdata', yaml_load(string)))
@@ -186,6 +189,9 @@ class ContextCustomRcTests(TestCase):
         assert context.proxy_servers['sftp'] == ''
         assert context.proxy_servers['ftps'] == 'False'
         assert context.proxy_servers['rsync'] == 'false'
+
+    def test_repodata_fns(self):
+        assert context.repodata_fns == ('somedata.json', 'otherdata.json')
 
     def test_conda_build_root_dir(self):
         assert context.conda_build['root-dir'] == "/some/test/path"

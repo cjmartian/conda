@@ -220,7 +220,8 @@ class Context(Configuration):
     use_local = PrimitiveParameter(False)
     whitelist_channels = SequenceParameter(string_types, expandvars=True)
     restore_free_channel = PrimitiveParameter(False)
-    repodata_fns = SequenceParameter(string_types, ("current_repodata.json", REPODATA_FN))
+    repodata_fns = SequenceParameter(string_types, ("current_repodata.json", REPODATA_FN),
+                                                    aliases=('repodata_fn'))
     _use_only_tar_bz2 = PrimitiveParameter(None, element_type=(bool, NoneType),
                                            aliases=('use_only_tar_bz2',))
 
@@ -289,8 +290,6 @@ class Context(Configuration):
 
         super(Context, self).__init__(search_path=search_path, app_name=APP_NAME,
                                       argparse_args=argparse_args)
-        print(self.repodata_fns)
-
     def post_build_validation(self):
         errors = []
         if self.client_ssl_cert_key and not self.client_ssl_cert:
