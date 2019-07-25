@@ -93,6 +93,7 @@ def display_actions(actions, index, show_channel_urls=None, specs_to_remove=(), 
 
         disp_lst = []
         for prec in actions[FETCH]:
+            print(prec)
             assert isinstance(prec, PackageRecord)
             extra = '%15s' % human_bytes(prec['size'])
             schannel = channel_filt(prec.channel.canonical_name)
