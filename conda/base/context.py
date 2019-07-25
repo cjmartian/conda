@@ -289,6 +289,7 @@ class Context(Configuration):
 
         super(Context, self).__init__(search_path=search_path, app_name=APP_NAME,
                                       argparse_args=argparse_args)
+        print(self.repodata_fns)
 
     def post_build_validation(self):
         errors = []
